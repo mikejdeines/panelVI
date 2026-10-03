@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "panelVI"
+version = "1.0.0"
+description = "MERFISH gene panel selection with sparse hierarchical scANVI."
+readme = "README.md"
+requires-python = ">=3.12"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Michael J. Deines", email = "deines@purdue.edu"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+]
+
+dependencies = [
+    "anndata",
+    "annbatch[zarrs]",
+    "lightning",
+    "matplotlib",
+    "numpy",
+    "pandas",
+    "scanpy",
+    "scipy",
+    "scvi-tools",
+    "seaborn",
+    "torch",
+    "zarr",
+]
+
+[project.optional-dependencies]
+notebook = ["jupyter"]
+
+[tool.setuptools]
+packages = ["panelvi"]
