@@ -1886,7 +1886,7 @@ def make_annbatch_loader(
             shuffle=shuffle,
             drop_last=drop_last,
             return_index=return_index,
-            to_torch=True,
+            to="torch",
         ).use_collection(collection, load_adata=custom_load_func)
 
 
@@ -1969,7 +1969,7 @@ def make_annbatch_train_val_loaders(
             shuffle=True,
             drop_last=True,
             return_index=return_index,
-            to_torch=True,
+            to="torch",
         )
         for group in train_groups:
             train_loader.add_adata(custom_load_func(group))
@@ -1981,7 +1981,7 @@ def make_annbatch_train_val_loaders(
             shuffle=False,
             drop_last=False,
             return_index=return_index,
-            to_torch=True,
+            to="torch",
         )
         for group in val_groups:
             val_loader.add_adata(custom_load_func(group))
@@ -2110,7 +2110,7 @@ def train_sparse_hierarchical_scanvi(
     collection_path
         Optional annbatch collection directory for out-of-core loading.
         Note: the backing ``.zarr`` store must live on local NVMe scratch rather than NFS for
-        ``zarrs`` to reach full throughput. On Linux, ``to_torch=True`` with multiprocessing
+        ``zarrs`` to reach full throughput. On Linux, ``to="torch"`` with multiprocessing
         requires setting ``multiprocessing_context='spawn'`` in ``datasplitter_kwargs``.
     annbatch_chunk_size
         Number of annbatch chunks loaded per fetch.
