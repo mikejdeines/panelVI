@@ -18,15 +18,7 @@ python -m pip install .
 For development, use `python -m pip install -e .`. To include Jupyter, install
 `python -m pip install '.[notebook]'`.
 
-The package uses scRefine's flat layout (`panelvi/` beside `pyproject.toml`),
-explicit setuptools package list, and author contact information. The BSD-3-Clause
-license is included in `LICENSE`. The version, Python requirement, and main
-dependencies come from `panel_selection.def`. Direct dependencies imported by the scripts are also
-listed. Versions remain unpinned, as in the definition file; this is not a
-lockfile. The model uses private scvi-tools APIs, so compatibility should be
-checked when upgrading that dependency.
-
-For the Linux CUDA 12.9 PyTorch build used by the definition file, install Torch
+For the Linux CUDA 12.9 PyTorch build used by the pyproject.toml file, install Torch
 before installing panelVI:
 
 ```bash
@@ -34,9 +26,7 @@ python -m pip install --index-url https://download.pytorch.org/whl/cu129 torch
 python -m pip install .
 ```
 
-CUDA wheel selection is an installation step, not a portable project dependency.
-The Rocky Linux system packages and Conda setup belong to the container
-configuration. Training retains the original CPU fallback when CUDA is unavailable.
+Training retains the original CPU fallback when CUDA is unavailable.
 
 ## Prepare a collection and select a panel
 
@@ -73,7 +63,7 @@ explicit `zarr_path` does not follow the default naming scheme, pass the returne
 
 The count matrix is read from `adata.X`, or from the layer specified by `layer`.
 By default, `adata.obs` must contain `feature_matrix_label`, `class`, `subclass`,
-and `cluster`; adapt the keyword arguments to your data. Gene names come from
+and `cluster`: adapt the keyword arguments to your data. Gene names come from
 `adata.var_names`.
 
 For `results/panel.txt`, selection also writes `panel_elbo.tsv`, `panel_elbo.png`,
